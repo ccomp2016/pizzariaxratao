@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="dGJsX3ZlbmRhcyAsMTY0LDQxLDg3YTdiMGZkLTc1YmMtNDQyZS1iN2EwLWMyNWMyYjI5ODE4ODt0&#xA;YmxfcHJvZHV0byAsNTgxLDY3LGNhOTQ5MWRhLWFmYTUtNGIxZS04OWEwLTYzYjUwZDVkNzRkYzt0&#xA;YmxfdmVuZGFzX3Byb2R1dG9zICwzMjIsNTQsZGMxYTlmOTUtNDEwNy00MWU4LWJlNmQtYWIwZDRk&#xA;MzIyMzhmO3RibF9jbGllbnRlICwxNSwxNSwwMjk1ODRkZi0yYzc3LTQ5MzItODIxMi03ODAzOTJk&#xA;MWU3MjM7&#xA;"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="pizzariaxratao"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT tbl_cliente.pk_id_cliente AS tbl_cliente_pk_id_cliente,
+	tbl_cliente.cli_nome AS tbl_cliente_cli_nome,
+	tbl_cliente.cli_endereco AS tbl_cliente_cli_endereco,
+	tbl_cliente.cli_bairro AS tbl_cliente_cli_bairro,
+	tbl_vendas.pk_id_vendas AS tbl_vendas_pk_id_vendas,
+	tbl_vendas.ven_data_venda AS tbl_vendas_ven_data_venda,
+	tbl_vendas.ven_valor_liquido AS tbl_vendas_ven_valor_liquido,
+	tbl_vendas.ven_valor_bruto AS tbl_vendas_ven_valor_bruto,
+	tbl_vendas.ven_desconto AS tbl_vendas_ven_desconto,
+	tbl_vendas_produtos.pk_id_venda_produto AS tbl_vendas_produtos_pk_id_venda_produto,
+	tbl_vendas_produtos.ven_pro_valor AS tbl_vendas_produtos_ven_pro_valor,
+	tbl_vendas_produtos.ven_pro_quantidade AS tbl_vendas_produtos_ven_pro_quantidade,
+	tbl_produto.pk_id_produto AS tbl_produto_pk_id_produto,
+	tbl_produto.pro_nome AS tbl_produto_pro_nome,
+	tbl_produto.pro_valor AS tbl_produto_pro_valor,
+	tbl_produto.pro_estoque AS tbl_produto_pro_estoque,
+	tbl_cliente.cli_telefone
+FROM tbl_cliente tbl_cliente
+	INNER JOIN tbl_vendas tbl_vendas ON 
+	 tbl_cliente.pk_id_cliente = tbl_vendas.fk_cliente 
+	INNER JOIN tbl_vendas_produtos tbl_vendas_produtos ON 
+	 tbl_vendas.pk_id_vendas = tbl_vendas_produtos.fk_vendas 
+	INNER JOIN tbl_produto tbl_produto ON 
+	 tbl_vendas_produtos.fk_produto = tbl_produto.pk_id_produto]]>
+	</queryString>
+	<field name="tbl_cliente_pk_id_cliente" class="java.math.BigInteger">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_cliente_pk_id_cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_cliente"/>
+	</field>
+	<field name="tbl_cliente_cli_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_cliente_cli_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_cliente"/>
+	</field>
+	<field name="tbl_cliente_cli_endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_cliente_cli_endereco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_cliente"/>
+	</field>
+	<field name="tbl_cliente_cli_bairro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_cliente_cli_bairro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_cliente"/>
+	</field>
+	<field name="tbl_vendas_pk_id_vendas" class="java.math.BigInteger">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_vendas_pk_id_vendas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vendas"/>
+	</field>
+	<field name="tbl_vendas_ven_data_venda" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_vendas_ven_data_venda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vendas"/>
+	</field>
+	<field name="tbl_vendas_ven_valor_liquido" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_vendas_ven_valor_liquido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vendas"/>
+	</field>
+	<field name="tbl_vendas_ven_valor_bruto" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_vendas_ven_valor_bruto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vendas"/>
+	</field>
+	<field name="tbl_vendas_ven_desconto" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_vendas_ven_desconto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vendas"/>
+	</field>
+	<field name="tbl_vendas_produtos_pk_id_venda_produto" class="java.math.BigInteger">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_vendas_produtos_pk_id_venda_produto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vendas_produtos"/>
+	</field>
+	<field name="tbl_vendas_produtos_ven_pro_valor" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_vendas_produtos_ven_pro_valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vendas_produtos"/>
+	</field>
+	<field name="tbl_vendas_produtos_ven_pro_quantidade" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_vendas_produtos_ven_pro_quantidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vendas_produtos"/>
+	</field>
+	<field name="tbl_produto_pk_id_produto" class="java.math.BigInteger">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_produto_pk_id_produto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_produto"/>
+	</field>
+	<field name="tbl_produto_pro_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_produto_pro_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_produto"/>
+	</field>
+	<field name="tbl_produto_pro_valor" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_produto_pro_valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_produto"/>
+	</field>
+	<field name="tbl_produto_pro_estoque" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="tbl_produto_pro_estoque"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_produto"/>
+	</field>
+	<field name="cli_telefone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_telefone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_cliente"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<image>
+				<reportElement x="456" y="0" width="99" height="132" uuid="97705585-a0b5-4ec7-86f3-ae10c220e6af"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="7" width="32" height="18" forecolor="#000000" uuid="cf04c4ea-2a05-4e6d-8b3c-5eb635b5a0a8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1df61e8e-9f96-4164-8a16-34b2c8392230"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_cliente_pk_id_cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="32" y="7" width="32" height="18" forecolor="#000000" uuid="4446ccb8-68bb-4714-884c-cc8e70ed55e4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="01d90e0d-cd6b-4ff9-8689-c97a771de4ea"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_cliente_cli_nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="64" y="7" width="32" height="18" forecolor="#000000" uuid="86786af8-e9f8-4fe6-b6e1-f0fabc45ab5b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8aa1ac1c-6e18-46e6-852e-f06ff8575541"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_cliente_cli_endereco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="96" y="7" width="32" height="18" forecolor="#000000" uuid="dc97dd03-6be1-4554-82d8-a60bb8c4019c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bc3396d6-cad5-470e-bf56-5c62563c473e"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_cliente_cli_bairro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="128" y="7" width="32" height="18" forecolor="#000000" uuid="96bddd6c-3b60-43e4-aa61-37ba37b0bc7a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ef303ec-e823-458b-ac94-28875b0ebd48"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_vendas_pk_id_vendas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="160" y="7" width="32" height="18" forecolor="#000000" uuid="fe55df8b-9932-497a-a2a9-6b0bcc6674af">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="811ca92c-cab0-4cea-a75b-55985a55d2c6"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_vendas_ven_data_venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="192" y="7" width="32" height="18" forecolor="#000000" uuid="6a2c2447-9c7c-42ef-adf5-4a2ea138f82c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e0fa2aa-1028-4b91-97c5-d3d4389e9bfd"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_vendas_ven_valor_liquido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="224" y="7" width="32" height="18" forecolor="#000000" uuid="110372bb-ccb8-4320-8cec-da73199a8d4d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b933a0cd-872f-40ef-a9bd-82ea422c74e8"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_vendas_ven_valor_bruto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="256" y="7" width="32" height="18" forecolor="#000000" uuid="22af7086-a020-4d9c-bd57-28382604b144">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="70dc5160-ffe0-468b-a29d-0333e40b7ae3"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_vendas_ven_desconto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="288" y="7" width="32" height="18" forecolor="#000000" uuid="e202338b-7766-4e44-b824-230779f54615">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="56146785-74eb-40bb-9ea1-e96af6fed43e"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_vendas_produtos_pk_id_venda_produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="320" y="7" width="32" height="18" forecolor="#000000" uuid="5a2b5752-5719-4edb-8354-d79a9bf0ee95">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fbb227d8-481f-4a07-832f-f8e9c30834de"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_vendas_produtos_ven_pro_valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="352" y="7" width="32" height="18" forecolor="#000000" uuid="4e096635-9795-4b97-bb16-c93ae4db053d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c5b9959-b643-4da3-b83d-7b6f37abd19a"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_vendas_produtos_ven_pro_quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="384" y="7" width="32" height="18" forecolor="#000000" uuid="53d1cfc7-ad55-4359-a816-9420c4ee4bcc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7ddef60d-d2a8-46c5-9aa8-c892900c86db"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_produto_pk_id_produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="416" y="7" width="32" height="18" forecolor="#000000" uuid="bef94cd8-a017-4f22-949f-f6129d3babc5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4e43f20d-3f2f-49de-8437-acaa5faacba8"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_produto_pro_nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="448" y="7" width="32" height="18" forecolor="#000000" uuid="2d2d0db7-c643-4a89-ab3f-ffceb1698e44">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f730badb-781a-4016-abb5-229c1231480c"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_produto_pro_valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="480" y="7" width="32" height="18" forecolor="#000000" uuid="562f5a6c-e3b7-4bc7-8a41-cebb7b9d2d95">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87b37a1f-3828-432b-94af-63d85adeda63"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tbl_produto_pro_estoque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="512" y="7" width="32" height="18" forecolor="#000000" uuid="38b444a4-0061-4b95-82b9-3fa2e06e79ee">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="377bee33-e1a7-4584-986a-90f752959138"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[cli_telefone]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="32" height="18" uuid="3c5f4507-6b84-4520-a817-d0607712e228">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1df61e8e-9f96-4164-8a16-34b2c8392230"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_cliente_pk_id_cliente}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="32" y="0" width="32" height="18" uuid="d4fdb60a-2111-4f06-831e-d6c76f9a8b88">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="01d90e0d-cd6b-4ff9-8689-c97a771de4ea"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_cliente_cli_nome}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="64" y="0" width="32" height="18" uuid="e534ccb8-d242-4986-86ec-b06ec32f68a8">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8aa1ac1c-6e18-46e6-852e-f06ff8575541"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_cliente_cli_endereco}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="96" y="0" width="32" height="18" uuid="03a96ec8-2eee-4e4f-ba00-10187c9605e8">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bc3396d6-cad5-470e-bf56-5c62563c473e"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_cliente_cli_bairro}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="128" y="0" width="32" height="18" uuid="99d538a1-3a2c-4211-b20a-0ca22b4d6e33">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ef303ec-e823-458b-ac94-28875b0ebd48"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_vendas_pk_id_vendas}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="160" y="0" width="32" height="18" uuid="ee87d021-8946-4f9d-b0cd-ae126a512509">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="811ca92c-cab0-4cea-a75b-55985a55d2c6"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_vendas_ven_data_venda}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="192" y="0" width="32" height="18" uuid="b6c31a6b-d023-4be3-99a2-8dca5fea751b">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e0fa2aa-1028-4b91-97c5-d3d4389e9bfd"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_vendas_ven_valor_liquido}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="224" y="0" width="32" height="18" uuid="9fd93d75-646f-4763-9690-7ca637936ae3">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b933a0cd-872f-40ef-a9bd-82ea422c74e8"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_vendas_ven_valor_bruto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="256" y="0" width="32" height="18" uuid="585d09d7-7e9e-492a-9f0b-ae3ecde48f8c">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="70dc5160-ffe0-468b-a29d-0333e40b7ae3"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_vendas_ven_desconto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="288" y="0" width="32" height="18" uuid="2fd9c193-c405-4a0f-8945-f0ea9eabd59f">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="56146785-74eb-40bb-9ea1-e96af6fed43e"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_vendas_produtos_pk_id_venda_produto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="320" y="0" width="32" height="18" uuid="ee241fdf-a3bf-4e16-b3b9-bd8be8766e0b">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fbb227d8-481f-4a07-832f-f8e9c30834de"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_vendas_produtos_ven_pro_valor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="352" y="0" width="32" height="18" uuid="45236d10-6329-4efd-b016-7f4613113318">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c5b9959-b643-4da3-b83d-7b6f37abd19a"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_vendas_produtos_ven_pro_quantidade}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="384" y="0" width="32" height="18" uuid="547541da-e20c-4105-999c-5d7f8b81e466">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7ddef60d-d2a8-46c5-9aa8-c892900c86db"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_produto_pk_id_produto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="416" y="0" width="32" height="18" uuid="0c3d0456-6131-4870-9b69-d0213d6c214a">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4e43f20d-3f2f-49de-8437-acaa5faacba8"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_produto_pro_nome}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="448" y="0" width="32" height="18" uuid="8339d372-4817-4fa9-84f8-e6bad9980dae">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f730badb-781a-4016-abb5-229c1231480c"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_produto_pro_valor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="480" y="0" width="32" height="18" uuid="9a8abd6a-541b-4c32-9991-72ac92616ec3">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87b37a1f-3828-432b-94af-63d85adeda63"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_produto_pro_estoque}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="512" y="0" width="32" height="18" uuid="bd4c3cb2-f729-435a-b718-d5b4eb868797">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="377bee33-e1a7-4584-986a-90f752959138"/>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cli_telefone}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1133a906-5b71-476e-9f3e-bc97c97058c1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="729c3539-f946-4d0e-a0a7-bda2815ea1b0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="4834e99c-7f6c-485a-b098-50e5187f2ab4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="9825b46e-76f1-469a-abb8-a1cc27aad685"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="137d38c7-1a83-4fc5-b156-9d5f1b1a0ddc"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
